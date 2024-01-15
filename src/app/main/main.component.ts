@@ -22,9 +22,11 @@ export class MainComponent implements OnInit {
   }
 
   logOut() {
-    this.authenticationService.logout();
-    this.isLogged = this.authenticationService.isLogged();
-
+    let confirmLogout = confirm("Are you sure?");
+    if(confirmLogout){
+      this.authenticationService.logout();
+      this.isLogged = this.authenticationService.isLogged();
+    }
   }
 
   ngOnInit(): void {

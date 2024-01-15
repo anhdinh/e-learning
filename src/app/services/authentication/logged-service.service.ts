@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {environment} from "../../environments/environment";
 import {LocalStorageKeys} from "../../constants/LocalStorageKeys";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,8 @@ export class AuthenticationService {
 
   private loginUrl = environment.apiURL+'/authentication/login';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public isLogged(): boolean {
     return !!this.localStorage.getItem(LocalStorageKeys.JWT_TOKEN);
