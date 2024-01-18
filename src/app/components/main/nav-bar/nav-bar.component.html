@@ -1,0 +1,9 @@
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+  <a  *ngIf="!isLogged" class="split" routerLink="/login"><i class="fa fa-fw fa-user"></i>Login</a>
+  <a  *ngIf="!isLogged" class="split" routerLink="/register">Register</a>
+  <a *ngIf="isLogged" (click)="logOut()">Logout</a>
+</div>

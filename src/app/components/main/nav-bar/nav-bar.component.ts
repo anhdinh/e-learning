@@ -1,21 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {LocalStorageKeys} from "../constants/LocalStorageKeys";
-import {AuthenticationService} from "../services/authentication/logged-service.service";
+import { Component } from '@angular/core';
+import {AuthenticationService} from "../../../services/authentication.service";
 import {NgIf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-nav-bar',
   standalone: true,
   imports: [
-    RouterLink,
-    RouterOutlet,
-    NgIf
+    NgIf,
+    RouterLink
   ],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  templateUrl: './nav-bar.component.html',
+  styleUrl: './nav-bar.component.css'
 })
-export class MainComponent implements OnInit {
+export class NavBarComponent {
   isLogged: boolean = false;
 
   constructor(private authenticationService: AuthenticationService) {

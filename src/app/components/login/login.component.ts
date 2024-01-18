@@ -1,14 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthenticationService} from "../services/authentication/logged-service.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {Router} from "@angular/router";
-import {LocalStorageKeys} from "../constants/LocalStorageKeys";
+import {CommonModule} from "@angular/common";
+import {Router, RouterLink} from "@angular/router";
+import {AuthenticationService} from "../../services/authentication.service";
+import {LocalStorageKeys} from "../../constants/LocalStorageKeys";
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -37,10 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.authenticationService.login(this.loginForm.value).subscribe(
           data => {
             this.loading = false;
-            console.log("the data from login api :"+ JSON.stringify(data));
-            localStorage.setItem(LocalStorageKeys.JWT_TOKEN, data.jwtToken);
-            localStorage.setItem(LocalStorageKeys.USERNAME, data.username);
-            localStorage.setItem(LocalStorageKeys.ROLES, data.roles);
+            this.authenticationService.saveUserInfoToStorage(data.jwtToken,data.refreshToken,data.username,data.roles);
             this.router.navigate(["/"]);
           },
           error => {

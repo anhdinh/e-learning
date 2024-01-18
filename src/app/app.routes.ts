@@ -1,15 +1,20 @@
 import {Routes} from '@angular/router';
-import {MainPageComponent} from "./admin/main-page/main-page.component";
-import {MainComponent} from "./main/main.component";
-import {LoginComponent} from "./login/login.component";
+
 import {adminGuard} from "./guard/admin-guard.guard";
 import {loginGuard} from "./guard/login.guard";
+import {MainComponent} from "./components/main/main.component";
+import {RegisterComponent} from "./components/register/register.component";
+import {LoginComponent} from "./components/login/login.component";
+import {ForgotPasswordComponent} from "./components/forgot-password/forgot-password.component";
+
 
 export const routes: Routes = [
   {path: '', component: MainComponent},
-  {
-    path: "admin",canActivateChild:[adminGuard],
-    children:[{path:"",component:MainPageComponent}]
-  },
-  {path: "login", component: LoginComponent,canActivate:[loginGuard]}
+  {path:'register',component:RegisterComponent,canActivate:[loginGuard]},
+  {path: "login", component: LoginComponent,canActivate:[loginGuard]},
+  {path: "forgot", component: ForgotPasswordComponent,canActivate:[loginGuard]},
+  // {
+  //   path: "admin",canActivateChild:[adminGuard],
+  //   children:[{path:""}]
+  // }
 ];

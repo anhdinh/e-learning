@@ -1,12 +1,7 @@
 <div class="wrapper fadeInDown">
-
-
   <div id="formContent">
-
     <!-- Login Form -->
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-
       <input type="text" id="login" formControlName="username" class="fadeIn second" name="login" placeholder="username">
       <input type="password" id="password" formControlName="password" class="fadeIn third" name="login" placeholder="password">
       <div class="div">
@@ -15,14 +10,10 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-
     </form>
     <div id="formFooter">
-      <a class="underlineHover" href="#">Register</a>
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" routerLink="/register">Register</a>
+      <a class="underlineHover" routerLink="/forgot" href="#">Forgot Password?</a>
     </div>
-
-
-
   </div>
 </div>
